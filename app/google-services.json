@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "547369903506",
+    "firebase_url": "https://cmp400-269dd-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "cmp400-269dd",
+    "storage_bucket": "cmp400-269dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:547369903506:android:46d1e61ae45bcecea8cd4b",
+        "android_client_info": {
+          "package_name": "ruben.friis.ronne.iot_honours_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "547369903506-msta0t26j0l7e0ad6u8dbeqcfcc17vmd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJNbzurueba8ctVOQQA4CLExX9fDXWwr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "547369903506-msta0t26j0l7e0ad6u8dbeqcfcc17vmd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:547369903506:android:6a52973bf03a57baa8cd4b",
+        "android_client_info": {
+          "package_name": "ruben.friis.ronne.togrowornottogrow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "547369903506-msta0t26j0l7e0ad6u8dbeqcfcc17vmd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJNbzurueba8ctVOQQA4CLExX9fDXWwr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "547369903506-msta0t26j0l7e0ad6u8dbeqcfcc17vmd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

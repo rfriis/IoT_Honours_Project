@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">To Grow, or not to Grow</string>
+    <string name="step_1">Step 1</string>
+    <string name="step_2">Step 2</string>
+    <string name="step_3">Step 3</string>
+    <string name="step_4">Step 4</string>
+    <string name="step_5">Step 5</string>
+    <string name="step_6">Step 6</string>
+    <string name="temp_description_step_1">Prepare your Raspberry Pi and breadboard</string>
+    <string name="temp_description_step_2">Description of step 2</string>
+    <string name="temp_description_step_3">Description of step 3</string>
+    <string name="temp_description_step_4">Description of step 4</string>
+    <string name="temp_description_step_5">Description of step 5</string>
+    <string name="temp_description_step_6">Description of step 6</string>
+</resources>
