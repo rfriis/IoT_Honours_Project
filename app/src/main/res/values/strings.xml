@@ -7,9 +7,14 @@
     <string name="step_5">Step 5</string>
     <string name="step_6">Step 6</string>
     <string name="temp_description_step_1">Prepare your Raspberry Pi and breadboard</string>
-    <string name="temp_description_step_2">Description of step 2</string>
-    <string name="temp_description_step_3">Description of step 3</string>
-    <string name="temp_description_step_4">Description of step 4</string>
-    <string name="temp_description_step_5">Description of step 5</string>
-    <string name="temp_description_step_6">Description of step 6</string>
+    <string name="temp_description_step_2">Insert the Temperature Sensor into the breadboard with the open side facing you, as shown</string>
+    <string name="temp_description_step_3">Insert the resistor into the breadboard with one pin in the first column, and one pin in the second column</string>
+    <string name="temp_description_step_4">Take the blue wire and insert the pin end into the first column of the breadboard below the resistor, and the socket end into the Raspberry Pi on the first pin from the left on the top row of pins</string>
+    <string name="temp_description_step_5">Take the orange wire and insert the pin end into the second column of the breadboard below the resistor, and the socket end into the Raspberry Pi on the fourth pin from the left on the top row of pins</string>
+    <string name="temp_description_step_6">Take the brown wire and insert the pin end into the fourth column of the breadboard, and the socket end into the Raspberry Pi on the third pin from the left on the top row of pins</string>
+    <string name="instruction_image">Instruction Image</string>
+    <string name="plant_name">Plant Name</string>
+    <string name="light">Light</string>
+    <string name="temperature">Temperature</string>
+    <string name="moisture">Moisture</string>
 </resources>

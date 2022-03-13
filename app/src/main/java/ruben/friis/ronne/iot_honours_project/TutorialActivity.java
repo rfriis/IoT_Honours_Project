@@ -24,7 +24,7 @@ public class TutorialActivity extends AppCompatActivity {
         viewPager2 = findViewById(R.id.viewPager);
         dotsIndicator = findViewById(R.id.dotsIndicator);
         // initialise the viewpager adapter
-        ViewPager2Adapter viewPager2Adapter = new ViewPager2Adapter(this);
+        ViewPager2Adapter viewPager2Adapter = new ViewPager2Adapter(this, tutorial);
         // add adapter to viewPager2
         viewPager2.setAdapter(viewPager2Adapter);
         // add viewPager to dotsIndicator
