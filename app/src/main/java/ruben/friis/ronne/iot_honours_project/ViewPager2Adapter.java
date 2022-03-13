@@ -49,17 +49,29 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
 
     // Images for light tutorial
     private int[] lightImages = {
-
+            R.drawable.step_1_light,
+            R.drawable.step_2_light,
+            R.drawable.step_3_light,
+            R.drawable.step_4_light,
+            R.drawable.step_5_light
     };
 
     // Step titles for light tutorial
     private int[] lightInstructionTitles = {
-
+            R.string.step_1,
+            R.string.step_2,
+            R.string.step_3,
+            R.string.step_4,
+            R.string.step_5
     };
 
     // Instructions for light tutorial
     private int[] lightInstructionDescriptions = {
-
+            R.string.light_description_step_1,
+            R.string.light_description_step_2,
+            R.string.light_description_step_3,
+            R.string.light_description_step_4,
+            R.string.light_description_step_5
     };
 
 
@@ -72,7 +84,9 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
             instructionTitles = temperatureInstructionTitles;
             instructionDescriptions = temperatureInstructionDescriptions;
         } else if (tutorial.equals("light")) {          // Light button pressed, set to Light tutorial
-
+            images = lightImages;
+            instructionTitles = lightInstructionTitles;
+            instructionDescriptions = lightInstructionDescriptions;
         }
     }
 
