@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
-        android:text="Plant Name"
+        android:text="@string/plant_name"
         android:textAlignment="center"
         android:textSize="30sp" />
 
@@ -24,7 +24,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="170dp"
         android:layout_marginBottom="10dp"
-        android:text="Temperature"
+        android:text="@string/temperature"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
-        android:text="Light"
+        android:text="@string/light"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
-        android:text="Moisture"
+        android:text="@string/moisture"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
@@ -53,29 +53,36 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
+
         <Button
             android:id="@+id/temperatureButton"
+            style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:text="@string/temperature"
             android:textColor="@color/white"
-            android:text="Temperature" />
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <Button
             android:id="@+id/lightButton"
+            style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:text="@string/light"
             android:textColor="@color/white"
-            android:text="Light"/>
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <Button
             android:id="@+id/moistureButton"
-            android:textColor="@color/white"
+            style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="Moisture"/>
+            android:text="@string/moisture"
+            android:textColor="@color/white"
+            tools:ignore="DuplicateSpeakableTextCheck" />
     </LinearLayout>
 
 </LinearLayout>

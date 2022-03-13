@@ -1,6 +1,7 @@
 package ruben.friis.ronne.iot_honours_project;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +13,51 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.ViewHolder> {
 
-    private int[] images = {R.drawable.step_1_temp, R.drawable.step_2_temp};
-    private int[] instructionTitles = {R.string.step_1, R.string.step_2};
-    private int[] instructionDescriptions = {R.string.temp_description_step_1, R.string.temp_description_step_2};
+    private int[] images = {};
+    private int[] instructionTitles = {};
+    private int[] instructionDescriptions = {};
+
+    // Images for temperature tutorial
+    private int[] temperatureImages = {
+            R.drawable.step_1_temp,
+            R.drawable.step_2_temp,
+            R.drawable.step_3_temp,
+            R.drawable.step_4_temp,
+            R.drawable.step_5_temp,
+            R.drawable.step_6_temp
+    };
+
+    // Step titles for temperature tutorial
+    private int[] temperatureInstructionTitles = {
+            R.string.step_1,
+            R.string.step_2,
+            R.string.step_3,
+            R.string.step_4,
+            R.string.step_5,
+            R.string.step_6
+    };
+
+    // Instructions for temperature tutorial
+    private int[] temperatureInstructionDescriptions = {
+            R.string.temp_description_step_1,
+            R.string.temp_description_step_2,
+            R.string.temp_description_step_3,
+            R.string.temp_description_step_4,
+            R.string.temp_description_step_5,
+            R.string.temp_description_step_6
+    };
 
 
     private Context context;
 
-    ViewPager2Adapter(Context context) {
+    ViewPager2Adapter(Context context, String tutorial) {
         this.context = context;
+        // if the Temperature button is pressed, set to Temperature tutorial
+        if (tutorial.equals("temperature")) {
+            images = temperatureImages;
+            instructionTitles = temperatureInstructionTitles;
+            instructionDescriptions = temperatureInstructionDescriptions;
+        }
     }
 
     @NonNull
