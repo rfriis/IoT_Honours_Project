@@ -47,16 +47,46 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
             R.string.temp_description_step_6
     };
 
+    // Images for light tutorial
+    private int[] lightImages = {
+            R.drawable.step_1_light,
+            R.drawable.step_2_light,
+            R.drawable.step_3_light,
+            R.drawable.step_4_light,
+            R.drawable.step_5_light
+    };
+
+    // Step titles for light tutorial
+    private int[] lightInstructionTitles = {
+            R.string.step_1,
+            R.string.step_2,
+            R.string.step_3,
+            R.string.step_4,
+            R.string.step_5
+    };
+
+    // Instructions for light tutorial
+    private int[] lightInstructionDescriptions = {
+            R.string.light_description_step_1,
+            R.string.light_description_step_2,
+            R.string.light_description_step_3,
+            R.string.light_description_step_4,
+            R.string.light_description_step_5
+    };
+
 
     private Context context;
 
     ViewPager2Adapter(Context context, String tutorial) {
         this.context = context;
-        // if the Temperature button is pressed, set to Temperature tutorial
-        if (tutorial.equals("temperature")) {
+        if (tutorial.equals("temperature")) {           // Temperature button pressed, set to Temperature tutorial
             images = temperatureImages;
             instructionTitles = temperatureInstructionTitles;
             instructionDescriptions = temperatureInstructionDescriptions;
+        } else if (tutorial.equals("light")) {          // Light button pressed, set to Light tutorial
+            images = lightImages;
+            instructionTitles = lightInstructionTitles;
+            instructionDescriptions = lightInstructionDescriptions;
         }
     }
 

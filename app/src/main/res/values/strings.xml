@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">To Grow, or not to Grow</string>
+    <string name="app_name">IoT Honours Project</string>
+    <string name="instruction_image">Instruction Image</string>
+    <string name="plant_name">Plant Name</string>
+    <string name="light">Light</string>
+    <string name="temperature">Temperature</string>
+    <string name="moisture">Moisture</string>
     <string name="step_1">Step 1</string>
     <string name="step_2">Step 2</string>
     <string name="step_3">Step 3</string>
@@ -8,13 +13,13 @@
     <string name="step_6">Step 6</string>
     <string name="temp_description_step_1">Prepare your Raspberry Pi and breadboard</string>
     <string name="temp_description_step_2">Insert the Temperature Sensor into the breadboard with the open side facing you, as shown</string>
-    <string name="temp_description_step_3">Insert the resistor into the breadboard with one pin in the first column, and one pin in the second column</string>
-    <string name="temp_description_step_4">Take the blue wire and insert the pin end into the first column of the breadboard below the resistor, and the socket end into the Raspberry Pi on the first pin from the left on the top row of pins</string>
-    <string name="temp_description_step_5">Take the orange wire and insert the pin end into the second column of the breadboard below the resistor, and the socket end into the Raspberry Pi on the fourth pin from the left on the top row of pins</string>
-    <string name="temp_description_step_6">Take the brown wire and insert the pin end into the fourth column of the breadboard, and the socket end into the Raspberry Pi on the third pin from the left on the top row of pins</string>
-    <string name="instruction_image">Instruction Image</string>
-    <string name="plant_name">Plant Name</string>
-    <string name="light">Light</string>
-    <string name="temperature">Temperature</string>
-    <string name="moisture">Moisture</string>
+    <string name="temp_description_step_3">Insert the Resistor into the breadboard with one pin in the first column, and one pin in the second column</string>
+    <string name="temp_description_step_4">Take the Blue wire and insert the pin end into the first column of the breadboard below the resistor, and the socket end into the Raspberry Pi on the first pin from the left on the top row of pins</string>
+    <string name="temp_description_step_5">Take the Orange wire and insert the pin end into the second column of the breadboard below the resistor, and the socket end into the Raspberry Pi on the fourth pin from the left on the top row of pins</string>
+    <string name="temp_description_step_6">Take the Brown wire and insert the pin end into the fourth column of the breadboard, and the socket end into the Raspberry Pi on the third pin from the left on the top row of pins</string>
+    <string name="light_description_step_1">Prepare your Light Sensor by finding the connector with four wires and plugging it into either side of the sensor. There should be a white wire, green wire, black wire and red wire</string>
+    <string name="light_description_step_2">Plug the White wire into the Raspberry Pi on the fifth pin from the left on the bottom row of pins</string>
+    <string name="light_description_step_3">Plug the Green wire into the Raspberry Pi on the first pin from the left on the bottom row of pins</string>
+    <string name="light_description_step_4">Plug the Black wire into the Raspberry Pi on the second pin from the left on the bottom row of pins</string>
+    <string name="light_description_step_5">Plug the Red wire into the Raspberry Pi on the third pin from the left on the bottom row of pins</string>
 </resources>

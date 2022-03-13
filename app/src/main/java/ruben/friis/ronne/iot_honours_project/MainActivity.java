@@ -48,12 +48,22 @@ public class MainActivity extends AppCompatActivity {
         lightTutorialButton = findViewById(R.id.lightButton);
         moistureTutorialButton = findViewById(R.id.moistureButton);
 
-        // when click on temp tutorial button, start new activity
+        // when click on temp tutorial button, start new activity and send "temperature" as extra
         temperatureTutorialButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, TutorialActivity.class);
                 myIntent.putExtra("tutorial", "temperature");
+                MainActivity.this.startActivity(myIntent);
+            }
+        });
+
+        // when click on light tutorial button, start new activity and send "light" as extra
+        lightTutorialButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, TutorialActivity.class);
+                myIntent.putExtra("tutorial", "light");
                 MainActivity.this.startActivity(myIntent);
             }
         });
