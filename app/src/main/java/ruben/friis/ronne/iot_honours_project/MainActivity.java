@@ -68,6 +68,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // when click on moisture tutorial button, start new activity and send "moisture" as extra
+        moistureTutorialButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, TutorialActivity.class);
+                myIntent.putExtra("tutorial", "moisture");
+                MainActivity.this.startActivity(myIntent);
+            }
+        });
 
         // get firebase database instance
         firebaseDatabase = FirebaseDatabase.getInstance();

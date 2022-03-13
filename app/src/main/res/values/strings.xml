@@ -22,4 +22,10 @@
     <string name="light_description_step_3">Plug the Green wire into the Raspberry Pi on the first pin from the left on the bottom row of pins</string>
     <string name="light_description_step_4">Plug the Black wire into the Raspberry Pi on the second pin from the left on the bottom row of pins</string>
     <string name="light_description_step_5">Plug the Red wire into the Raspberry Pi on the third pin from the left on the bottom row of pins</string>
+    <string name="moisture_description_step_1">Prepare the moisture sensor and connector</string>
+    <string name="moisture_description_step_2"></string>
+    <string name="moisture_description_step_3"></string>
+    <string name="moisture_description_step_4"></string>
+    <string name="moisture_description_step_5"></string>
+    <string name="moisture_description_step_6"></string>
 </resources>

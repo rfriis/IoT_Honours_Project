@@ -74,6 +74,21 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
             R.string.light_description_step_5
     };
 
+    // Images for moisture tutorial
+    private int[] moistureImages = {
+            R.drawable.step_1_moisture
+    };
+
+    // Step titles for moisture tutorial
+    private int[] moistureInstructionTitles = {
+            R.string.step_1
+    };
+
+    // Instructions for moisture tutorial
+    private int[] moistureInstructionDescription = {
+            R.string.moisture_description_step_1
+    };
+
 
     private Context context;
 
@@ -87,6 +102,10 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
             images = lightImages;
             instructionTitles = lightInstructionTitles;
             instructionDescriptions = lightInstructionDescriptions;
+        } else if (tutorial.equals("moisture")) {       // Moisture button pressed, set to Moisture tutorial
+            images = moistureImages;
+            instructionTitles = moistureInstructionTitles;
+            instructionDescriptions = moistureInstructionDescription;
         }
     }
 
