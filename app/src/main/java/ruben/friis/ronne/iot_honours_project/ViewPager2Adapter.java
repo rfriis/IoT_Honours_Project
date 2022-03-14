@@ -76,17 +76,32 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
 
     // Images for moisture tutorial
     private int[] moistureImages = {
-            R.drawable.step_1_moisture
+            R.drawable.step_1_moisture,
+            R.drawable.step_2_moisture,
+            R.drawable.step_3_moisture,
+            R.drawable.step_4_moisture,
+            R.drawable.step_5_moisture,
+            R.drawable.step_6_moisture
     };
 
     // Step titles for moisture tutorial
     private int[] moistureInstructionTitles = {
-            R.string.step_1
+            R.string.step_1,
+            R.string.step_2,
+            R.string.step_3,
+            R.string.step_4,
+            R.string.step_5,
+            R.string.step_6
     };
 
     // Instructions for moisture tutorial
     private int[] moistureInstructionDescription = {
-            R.string.moisture_description_step_1
+            R.string.moisture_description_step_1,
+            R.string.moisture_description_step_2,
+            R.string.moisture_description_step_3,
+            R.string.moisture_description_step_4,
+            R.string.moisture_description_step_5,
+            R.string.moisture_description_step_6
     };
 
 

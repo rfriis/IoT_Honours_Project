@@ -22,10 +22,10 @@
     <string name="light_description_step_3">Plug the Green wire into the Raspberry Pi on the first pin from the left on the bottom row of pins</string>
     <string name="light_description_step_4">Plug the Black wire into the Raspberry Pi on the second pin from the left on the bottom row of pins</string>
     <string name="light_description_step_5">Plug the Red wire into the Raspberry Pi on the third pin from the left on the bottom row of pins</string>
-    <string name="moisture_description_step_1">Prepare the moisture sensor and connector</string>
-    <string name="moisture_description_step_2"></string>
-    <string name="moisture_description_step_3"></string>
-    <string name="moisture_description_step_4"></string>
-    <string name="moisture_description_step_5"></string>
-    <string name="moisture_description_step_6"></string>
+    <string name="moisture_description_step_1">Prepare the moisture sensor and comparator board</string>
+    <string name="moisture_description_step_2">Connect the Black wire from the pronged sensor to the board</string>
+    <string name="moisture_description_step_3">Connect the White wire from the pronged sensor to the board</string>
+    <string name="moisture_description_step_4">Holding the comparator as shown, plug one end of the Yellow wire to the top pin on the comparator, and the other end into the Raspberry Pi on the ninth pin from the left on the bottom row</string>
+    <string name="moisture_description_step_5">Take the Grey wire and connect one end to the second top pin on the comparator, and the other end into the Raspberry Pi on the tenth pin from the left on the top row</string>
+    <string name="moisture_description_step_6">Take the Purple wire and connect one end to the third top pin on the comparator, and the other end into the Raspberry Pi on the tenth pin from the left on the bottom row</string>
 </resources>
