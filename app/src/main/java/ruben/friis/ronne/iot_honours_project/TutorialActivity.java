@@ -2,6 +2,7 @@ package ruben.friis.ronne.iot_honours_project;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,5 +47,13 @@ public class TutorialActivity extends AppCompatActivity {
                 super.onPageScrollStateChanged(state);
             }
         });
+    }
+
+    public void previousPage(View view) {
+        viewPager2.setCurrentItem(viewPager2.getCurrentItem() - 1, true);
+    }
+
+    public void nextPage(View view) {
+        viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1, true);
     }
 }
