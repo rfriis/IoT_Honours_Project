@@ -78,6 +78,13 @@ public class TutorialActivity extends AppCompatActivity {
 
         // Set FINISH button onClick listener
         finishButton.setOnClickListener(v -> {
+            // Make arguments bundle for dialog fragment
+            Bundle args = new Bundle();
+            args.putString("tutorial", tutorial);
+            SensorConnectionDialog myDialog = new SensorConnectionDialog();
+            myDialog.setArguments(args);
+            myDialog.show(getSupportFragmentManager(), SensorConnectionDialog.TAG);
+
             //TODO
             // - Launch a new activity or fragment?
             // - Get sensor connection data from Firebase
