@@ -30,4 +30,5 @@
     <string name="moisture_description_step_6">Take the Purple wire and connect one end to the third top pin on the comparator, and the other end into the Raspberry Pi on the tenth pin from the left on the bottom row</string>
     <string name="back">Back</string>
     <string name="next">Next</string>
+    <string name="finish">Finish</string>
 </resources>
