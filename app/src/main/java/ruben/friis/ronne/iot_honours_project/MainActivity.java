@@ -49,33 +49,24 @@ public class MainActivity extends AppCompatActivity {
         moistureTutorialButton = findViewById(R.id.moistureButton);
 
         // when click on temp tutorial button, start new activity and send "temperature" as extra
-        temperatureTutorialButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, TutorialActivity.class);
-                myIntent.putExtra("tutorial", "temperature");
-                MainActivity.this.startActivity(myIntent);
-            }
+        temperatureTutorialButton.setOnClickListener(v -> {
+            Intent myIntent = new Intent(MainActivity.this, TutorialActivity.class);
+            myIntent.putExtra("tutorial", "temperature");
+            MainActivity.this.startActivity(myIntent);
         });
 
         // when click on light tutorial button, start new activity and send "light" as extra
-        lightTutorialButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, TutorialActivity.class);
-                myIntent.putExtra("tutorial", "light");
-                MainActivity.this.startActivity(myIntent);
-            }
+        lightTutorialButton.setOnClickListener(v -> {
+            Intent myIntent = new Intent(MainActivity.this, TutorialActivity.class);
+            myIntent.putExtra("tutorial", "light");
+            MainActivity.this.startActivity(myIntent);
         });
 
         // when click on moisture tutorial button, start new activity and send "moisture" as extra
-        moistureTutorialButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, TutorialActivity.class);
-                myIntent.putExtra("tutorial", "moisture");
-                MainActivity.this.startActivity(myIntent);
-            }
+        moistureTutorialButton.setOnClickListener(v -> {
+            Intent myIntent = new Intent(MainActivity.this, TutorialActivity.class);
+            myIntent.putExtra("tutorial", "moisture");
+            MainActivity.this.startActivity(myIntent);
         });
 
         // get firebase database instance

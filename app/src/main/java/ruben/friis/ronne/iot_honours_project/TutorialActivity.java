@@ -71,19 +71,20 @@ public class TutorialActivity extends AppCompatActivity {
         });
 
         // Set NEXT button onClick listener
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1, true);
-            }
-        });
+        nextButton.setOnClickListener(v -> viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1, true));
 
         // Set BACK button onClick listener
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewPager2.setCurrentItem(viewPager2.getCurrentItem() - 1, true);
-            }
+        backButton.setOnClickListener(v -> viewPager2.setCurrentItem(viewPager2.getCurrentItem() - 1, true));
+
+        // Set FINISH button onClick listener
+        finishButton.setOnClickListener(v -> {
+            //TODO
+            // - Launch a new activity or fragment?
+            // - Get sensor connection data from Firebase
+            // - Is the sensor connected?
+            // - Also get user to check the light on the sensor
+            //      - only on Light and Moisture sensors
+            // - Button to return to Main screen
         });
     }
 }
