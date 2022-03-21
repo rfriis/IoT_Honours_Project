@@ -51,21 +51,21 @@ public class MainActivity extends AppCompatActivity {
         // when click on temp tutorial button, start new activity and send "temperature" as extra
         temperatureTutorialButton.setOnClickListener(v -> {
             Intent myIntent = new Intent(MainActivity.this, TutorialActivity.class);
-            myIntent.putExtra("tutorial", "temperature");
+            myIntent.putExtra("tutorial", "Temperature");
             MainActivity.this.startActivity(myIntent);
         });
 
         // when click on light tutorial button, start new activity and send "light" as extra
         lightTutorialButton.setOnClickListener(v -> {
             Intent myIntent = new Intent(MainActivity.this, TutorialActivity.class);
-            myIntent.putExtra("tutorial", "light");
+            myIntent.putExtra("tutorial", "Light");
             MainActivity.this.startActivity(myIntent);
         });
 
         // when click on moisture tutorial button, start new activity and send "moisture" as extra
         moistureTutorialButton.setOnClickListener(v -> {
             Intent myIntent = new Intent(MainActivity.this, TutorialActivity.class);
-            myIntent.putExtra("tutorial", "moisture");
+            myIntent.putExtra("tutorial", "Moisture");
             MainActivity.this.startActivity(myIntent);
         });
 

@@ -1,7 +1,6 @@
 package ruben.friis.ronne.iot_honours_project;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.ViewHolder> {
 
     private int[] images = {};
@@ -18,7 +18,7 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
     private int[] instructionDescriptions = {};
 
     // Images for temperature tutorial
-    private int[] temperatureImages = {
+    private final int[] temperatureImages = {
             R.drawable.step_1_temp,
             R.drawable.step_2_temp,
             R.drawable.step_3_temp,
@@ -28,7 +28,7 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
     };
 
     // Step titles for temperature tutorial
-    private int[] temperatureInstructionTitles = {
+    private final int[] temperatureInstructionTitles = {
             R.string.step_1,
             R.string.step_2,
             R.string.step_3,
@@ -38,7 +38,7 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
     };
 
     // Instructions for temperature tutorial
-    private int[] temperatureInstructionDescriptions = {
+    private final int[] temperatureInstructionDescriptions = {
             R.string.temp_description_step_1,
             R.string.temp_description_step_2,
             R.string.temp_description_step_3,
@@ -48,7 +48,7 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
     };
 
     // Images for light tutorial
-    private int[] lightImages = {
+    private final int[] lightImages = {
             R.drawable.step_1_light,
             R.drawable.step_2_light,
             R.drawable.step_3_light,
@@ -57,7 +57,7 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
     };
 
     // Step titles for light tutorial
-    private int[] lightInstructionTitles = {
+    private final int[] lightInstructionTitles = {
             R.string.step_1,
             R.string.step_2,
             R.string.step_3,
@@ -66,7 +66,7 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
     };
 
     // Instructions for light tutorial
-    private int[] lightInstructionDescriptions = {
+    private final int[] lightInstructionDescriptions = {
             R.string.light_description_step_1,
             R.string.light_description_step_2,
             R.string.light_description_step_3,
@@ -75,7 +75,7 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
     };
 
     // Images for moisture tutorial
-    private int[] moistureImages = {
+    private final int[] moistureImages = {
             R.drawable.step_1_moisture,
             R.drawable.step_2_moisture,
             R.drawable.step_3_moisture,
@@ -85,7 +85,7 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
     };
 
     // Step titles for moisture tutorial
-    private int[] moistureInstructionTitles = {
+    private final int[] moistureInstructionTitles = {
             R.string.step_1,
             R.string.step_2,
             R.string.step_3,
@@ -95,7 +95,7 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
     };
 
     // Instructions for moisture tutorial
-    private int[] moistureInstructionDescription = {
+    private final int[] moistureInstructionDescription = {
             R.string.moisture_description_step_1,
             R.string.moisture_description_step_2,
             R.string.moisture_description_step_3,
@@ -104,23 +104,26 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
             R.string.moisture_description_step_6
     };
 
-
     private Context context;
 
     ViewPager2Adapter(Context context, String tutorial) {
         this.context = context;
-        if (tutorial.equals("temperature")) {           // Temperature button pressed, set to Temperature tutorial
-            images = temperatureImages;
-            instructionTitles = temperatureInstructionTitles;
-            instructionDescriptions = temperatureInstructionDescriptions;
-        } else if (tutorial.equals("light")) {          // Light button pressed, set to Light tutorial
-            images = lightImages;
-            instructionTitles = lightInstructionTitles;
-            instructionDescriptions = lightInstructionDescriptions;
-        } else if (tutorial.equals("moisture")) {       // Moisture button pressed, set to Moisture tutorial
-            images = moistureImages;
-            instructionTitles = moistureInstructionTitles;
-            instructionDescriptions = moistureInstructionDescription;
+        switch (tutorial) {
+            case "Temperature":                         // Temperature button pressed, set to Temperature tutorial
+                images = temperatureImages;
+                instructionTitles = temperatureInstructionTitles;
+                instructionDescriptions = temperatureInstructionDescriptions;
+                break;
+            case "Light":                               // Light button pressed, set to Light tutorial
+                images = lightImages;
+                instructionTitles = lightInstructionTitles;
+                instructionDescriptions = lightInstructionDescriptions;
+                break;
+            case "Moisture":                            // Moisture button pressed, set to Moisture tutorial
+                images = moistureImages;
+                instructionTitles = moistureInstructionTitles;
+                instructionDescriptions = moistureInstructionDescription;
+                break;
         }
     }
 
