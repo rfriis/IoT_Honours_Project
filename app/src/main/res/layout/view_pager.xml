@@ -19,7 +19,6 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="previousPage"
         android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -46,9 +45,19 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:onClick="nextPage"
         android:text="@string/next"
         style="@style/Widget.AppCompat.Button.Borderless"/>
+
+    <Button
+        android:id="@+id/tutorialFinishButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/finish"
+        android:visibility="gone"
+        android:textColor="@color/white"
+        style="@style/Widget.AppCompat.Button"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
