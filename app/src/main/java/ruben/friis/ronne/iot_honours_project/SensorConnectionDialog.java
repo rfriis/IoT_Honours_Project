@@ -46,7 +46,7 @@ public class SensorConnectionDialog extends DialogFragment {
         alertDialog = new AlertDialog.Builder(requireContext())
                 .setTitle(message)
                 .setMessage(additionalInfo)
-                .setPositiveButton(getString(R.string.finish), (dialog, which) -> {Log.d("dialogDebug", "Finish button pressed"); })
+                .setPositiveButton(getString(R.string.finish), (dialog, which) -> {getActivity().finish();} )
                 .create();
         return alertDialog;
     }
