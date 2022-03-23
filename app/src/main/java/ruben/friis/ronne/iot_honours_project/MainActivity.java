@@ -3,6 +3,8 @@ package ruben.friis.ronne.iot_honours_project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -15,6 +17,8 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
 
     Button temperatureTutorialButton;
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     DatabaseReference mainSetReference;
+    DatabaseReference plantTypesReference;
 
     private TextView moistureTextView;
     private TextView tempTextView;
@@ -73,9 +78,14 @@ public class MainActivity extends AppCompatActivity {
         tempTextView = findViewById(R.id.textViewTemperature);
         lightTextView = findViewById(R.id.textViewLight);
 
+        // Get Plant Types from Firebase
+        getPlants();
+
+        // Get live Environment data from Firebase
         getFirebaseData();
     }
 
+    // Get data from sensors
     private void getFirebaseData() {
         mainSetReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -94,4 +104,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void getPlants() {
+        plantTypesReference = firebaseDatabase.getReference("Plants");
+        plantTypesReference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting plant types data", task.getException());
+                } else {
+                    Log.d("firebase", task.getResult().getValue().toString());
+                    Log.d("firebase", "Number of Plants:" + task.getResult().getChildrenCount());
+                    for (DataSnapshot child : task.getResult().getChildren()) {
+                        Log.d("firebase", "Plant:" + child.getKey());
+                        HashMap plantValues = (HashMap) child.getValue();
+                        Log.d("firebase", "map:" + plantValues);
+                        Log.d("firebase", "Temp Max  value" + plantValues.get("tempMax"));
+                    }
+                }
+            }
+        });
+    }
+
 }
