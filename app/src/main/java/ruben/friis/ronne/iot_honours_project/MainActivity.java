@@ -14,10 +14,16 @@ import com.google.firebase.database.ValueEventListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView moistureTextView;
     private TextView tempTextView;
     private TextView lightTextView;
+    private Spinner plantTypeSpinner;
+    private ArrayList<String> plantNames;
+    private ArrayList<Plant> plants;
 
 
     @Override
@@ -78,6 +87,25 @@ public class MainActivity extends AppCompatActivity {
         tempTextView = findViewById(R.id.textViewTemperature);
         lightTextView = findViewById(R.id.textViewLight);
 
+        // Initialise Plant Type Spinner
+        plantTypeSpinner = findViewById(R.id.plantTypeSpinner);
+        plantTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedPlant = parent.getSelectedItem().toString();
+                for (Plant plant : plants) {
+                    if (plant.getName() != null && plant.getName().contains(selectedPlant)) {
+                        Log.d("spinner", "Plant match : " + plant.getName() + " tempMin : " + plant.getTempMin());
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         // Get Plant Types from Firebase
         getPlants();
 
@@ -107,21 +135,27 @@ public class MainActivity extends AppCompatActivity {
 
     private void getPlants() {
         plantTypesReference = firebaseDatabase.getReference("Plants");
-        plantTypesReference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        // initialise plantTypes list
+        plantNames = new ArrayList<>();
+        plants = new ArrayList<>();
+        plantTypesReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting plant types data", task.getException());
-                } else {
-                    Log.d("firebase", task.getResult().getValue().toString());
-                    Log.d("firebase", "Number of Plants:" + task.getResult().getChildrenCount());
-                    for (DataSnapshot child : task.getResult().getChildren()) {
-                        Log.d("firebase", "Plant:" + child.getKey());
-                        HashMap plantValues = (HashMap) child.getValue();
-                        Log.d("firebase", "map:" + plantValues);
-                        Log.d("firebase", "Temp Max  value" + plantValues.get("tempMax"));
-                    }
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot child : snapshot.getChildren()) {
+                    HashMap plantValues = (HashMap) child.getValue();
+                    Plant plant = new Plant(child.getKey(), ((Number)plantValues.get("tempMin")).floatValue(), (String) plantValues.get("lightMax"), (String) plantValues.get("lightMin"));
+                    plants.add(plant);
+                    plantNames.add(plant.getName());
                 }
+                // Populate Plant spinner
+                String[] items = plantNames.toArray(new String[plantNames.size()]);
+                ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String> (getApplicationContext(), android.R.layout.simple_spinner_item, plantNames);
+                plantTypeSpinner.setAdapter(spinnerAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("firebase", error.toException());
             }
         });
     }

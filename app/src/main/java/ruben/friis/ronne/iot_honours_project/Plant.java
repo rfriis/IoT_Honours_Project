@@ -2,14 +2,12 @@ package ruben.friis.ronne.iot_honours_project;
 
 public class Plant {
     private String name;
-    private float tempMax;
     private float tempMin;
     private String lightMin;
     private String lightMax;
 
-    public Plant(String name, float tempMax, float tempMin, String lightMax, String lightMin) {
+    public Plant(String name, float tempMin, String lightMax, String lightMin) {
         this.name = name;
-        this.tempMax = tempMax;
         this.tempMin = tempMin;
         this.lightMax = lightMax;
         this.lightMin = lightMin;
@@ -18,10 +16,6 @@ public class Plant {
     public String getName() { return name; }
 
     public void setName(String name) { this.name = name; }
-
-    public float getTempMax() { return tempMax; }
-
-    public void setTempMax(float tempMax) { this.tempMax = tempMax; }
 
     public float getTempMin() { return tempMin; }
 
