@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> plantNames;
     private ArrayList<Plant> plants;
 
+    private float lightMin;
+    private float lightMax;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 for (Plant plant : plants) {
                     if (plant.getName() != null && plant.getName().contains(selectedPlant)) {
                         Log.d("spinner", "Plant match : " + plant.getName() + " tempMin : " + plant.getTempMin());
+                        setPlantData(plant);
                     }
                 }
             }
@@ -143,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot child : snapshot.getChildren()) {
                     HashMap plantValues = (HashMap) child.getValue();
-                    Plant plant = new Plant(child.getKey(), ((Number)plantValues.get("tempMin")).floatValue(), (String) plantValues.get("lightMax"), (String) plantValues.get("lightMin"));
+                    Plant plant = new Plant(child.getKey(), ((Number)plantValues.get("tempMin")).floatValue(), (String) plantValues.get("light"));
                     plants.add(plant);
                     plantNames.add(plant.getName());
                 }
@@ -158,6 +161,36 @@ public class MainActivity extends AppCompatActivity {
                 Log.w("firebase", error.toException());
             }
         });
+    }
+
+    private void setPlantData(Plant plant) {
+        //TODO
+        // - Extract data from Plant class
+        // - Translate String data into numerical data
+        // - Find the acceptable light level range
+        // - Populate the TextView's with the new data
+
+
+        float temperatureMin = plant.getTempMin();
+        String lightConditions = plant.getLight();
+        if (lightConditions.equals(getResources().getString(R.string.full_sun))) {                                  // Full Sun
+            lightMax = 100000000;
+            lightMin = 2000;
+        } else if (lightConditions.equals(getResources().getString(R.string.full_sun_to_partial_shade))) {          // Full Sun to Partial Shade
+            lightMax = 2000;
+            lightMin = 1250;
+        } else if (lightConditions.equals(getResources().getString(R.string.partial_shade))) {                      // Partial Shade
+            lightMax = 1250;
+            lightMin = 500;
+        } else if (lightConditions.equals(getResources().getString(R.string.partial_shade_to_full_shade))) {        // Partial Shade to Full Shade
+            lightMax = 500;
+            lightMin = 250;
+        } else if (lightConditions.equals(getResources().getString(R.string.full_shade))) {                         // Full Shade
+            lightMax = 250;
+            lightMin = 0;
+        }
+
+        Log.d("plant", plant.getName() + "   lightMin: " + lightMin + "   lightMax: " + lightMax);
     }
 
 }
