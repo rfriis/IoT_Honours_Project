@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference mainSetReference;
     DatabaseReference plantTypesReference;
 
+    private String temp;
+    private String light;
+    private String moisture;
     private TextView moistureTextView;
     private TextView tempTextView;
     private TextView lightTextView;
@@ -48,11 +51,18 @@ public class MainActivity extends AppCompatActivity {
     private String selectedPlant;
     private float lightMin;
     private float lightMax;
+    private float temperatureMin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Initialise environment data values;
+        temp = "";
+        light = "";
+        moisture = "";
+
 
         // initialise tutorial buttons
         temperatureTutorialButton = findViewById(R.id.temperatureButton);
@@ -109,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     if (plant.getName() != null && plant.getName().contains(selectedPlant)) {
                         Log.d("spinner", "Plant match : " + plant.getName() + " tempMin : " + plant.getTempMin());
                         setPlantData(plant);
+                        compareData();
                     }
                 }
             }
@@ -127,18 +138,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // Make data comparisons and set the appropriate UI values
+    private void compareData() {
+        // Temperature
+        Boolean tempOk = Float.parseFloat(temp) >= temperatureMin;
+        tempTextView.setText("Temperature OK: " + tempOk + " -> " + temp + " °C");
+        Log.d("plant", "TEMPERATURE OK: " + tempOk);
+
+        // Light
+        float lightValue = Float.parseFloat(light);
+        Boolean lightTooHigh = false;
+        Boolean lightTooLow = false;
+        if (lightValue > lightMax) {
+            lightTooHigh = true;
+            lightTextView.setText("Too much light");
+            Log.d("plant", "LIGHT TOO HIGH");
+        } else if (lightValue < lightMin) {
+            lightTooLow = true;
+            lightTextView.setText("Not enough light");
+            Log.d("plant", "LIGHT TOO LOW");
+        } else {
+            lightTextView.setText("Light level is good");
+            Log.d("plant", "LIGHT OK");
+        }
+
+        // Moisture
+        Boolean moistureOK = Boolean.valueOf(moisture);
+        if (moistureOK) {
+            moistureTextView.setText("Water level is good");
+        } else {
+            moistureTextView.setText("Plant needs water");
+        }
+        Log.d("plant", "MOISTURE OK: " + moistureOK);
+    }
+
 
     // Get data from sensors
     private void getFirebaseData() {
         mainSetReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String moisture = snapshot.child("moisture").getValue().toString();
-                String temp = snapshot.child("temperature").getValue().toString();
-                String light = snapshot.child("light").getValue().toString();
-                moistureTextView.setText(moisture);
-                tempTextView.setText(temp + " °C");
-                lightTextView.setText(light + " lux");
+                moisture = snapshot.child("moisture").getValue().toString();
+                temp = snapshot.child("temperature").getValue().toString();
+                light = snapshot.child("light").getValue().toString();
+
+                compareData();
             }
 
             @Override
@@ -197,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString(getString(R.string.plant_reference_key), plant.getName());
         editor.apply();
 
-        float temperatureMin = plant.getTempMin();
+        temperatureMin = plant.getTempMin();
         String lightConditions = plant.getLight();
         if (lightConditions.equals(getResources().getString(R.string.full_sun))) {                                  // Full Sun
             lightMax = 100000000;
