@@ -36,4 +36,7 @@
     <string name="back">Back</string>
     <string name="next">Next</string>
     <string name="finish">Finish</string>
+    <string name="plant_preference_file_key">ruben.friis.ronne.iot_honours_project.plant_preference</string>
+    <string name="plant_reference_key">selected_plant</string>
+    <string name="default_plant_value">DEFAULT</string>
 </resources>

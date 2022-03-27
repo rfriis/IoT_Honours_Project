@@ -11,7 +11,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +24,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner plantTypeSpinner;
     private ArrayList<String> plantNames;
     private ArrayList<Plant> plants;
-
+    private String selectedPlant;
     private float lightMin;
     private float lightMax;
 
@@ -89,6 +92,13 @@ public class MainActivity extends AppCompatActivity {
         tempTextView = findViewById(R.id.textViewTemperature);
         lightTextView = findViewById(R.id.textViewLight);
 
+
+        // Get selected Plant type from Shared Preferences if exits
+        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.plant_preference_file_key), Context.MODE_PRIVATE);
+        String defaultValue = getString(R.string.default_plant_value);
+        selectedPlant = sharedPreferences.getString(getString(R.string.plant_reference_key), defaultValue);
+        Log.d("plant", "Shared Preferences: " + selectedPlant);
+
         // Initialise Plant Type Spinner
         plantTypeSpinner = findViewById(R.id.plantTypeSpinner);
         plantTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -116,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
         getFirebaseData();
     }
 
+
+
     // Get data from sensors
     private void getFirebaseData() {
         mainSetReference.addValueEventListener(new ValueEventListener() {
@@ -136,6 +148,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    // Get plant types from Firebase
     private void getPlants() {
         plantTypesReference = firebaseDatabase.getReference("Plants");
         // initialise plantTypes list
@@ -154,6 +168,11 @@ public class MainActivity extends AppCompatActivity {
                 String[] items = plantNames.toArray(new String[plantNames.size()]);
                 ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String> (getApplicationContext(), android.R.layout.simple_spinner_item, plantNames);
                 plantTypeSpinner.setAdapter(spinnerAdapter);
+                int selectedPlantPosition = 0;
+                if (!selectedPlant.equals(getString(R.string.default_plant_value))) {                   // Set selected plant in spinner according to SharedPreferences
+                    selectedPlantPosition = plantNames.indexOf(selectedPlant);
+                }
+                plantTypeSpinner.setSelection(selectedPlantPosition);
             }
 
             @Override
@@ -163,6 +182,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    // Set the selected Plant's variables
     private void setPlantData(Plant plant) {
         //TODO
         // - Extract data from Plant class
@@ -170,6 +191,11 @@ public class MainActivity extends AppCompatActivity {
         // - Find the acceptable light level range
         // - Populate the TextView's with the new data
 
+        // Set plant in Shared Preferences
+        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.plant_preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(getString(R.string.plant_reference_key), plant.getName());
+        editor.apply();
 
         float temperatureMin = plant.getTempMin();
         String lightConditions = plant.getLight();
