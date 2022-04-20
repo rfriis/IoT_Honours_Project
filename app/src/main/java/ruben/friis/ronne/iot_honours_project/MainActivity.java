@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // Populate Plant spinner
                 String[] items = plantNames.toArray(new String[plantNames.size()]);
-                ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String> (getApplicationContext(), android.R.layout.simple_spinner_item, plantNames);
+                ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String> (getApplicationContext(), R.layout.spinner_item, plantNames);
                 plantTypeSpinner.setAdapter(spinnerAdapter);
                 int selectedPlantPosition = 0;
                 if (!selectedPlant.equals(getString(R.string.default_plant_value))) {                   // Set selected plant in spinner according to SharedPreferences

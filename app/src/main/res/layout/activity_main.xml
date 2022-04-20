@@ -1,49 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainLayout"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
+        android:id="@+id/spinnerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="@color/black"
         android:orientation="vertical"
-        android:outlineSpotShadowColor="@color/black"
         android:outlineProvider="bounds"
-        android:translationZ="1dp">
-
-
-<!--        <TextView-->
-<!--            android:id="@+id/textView3"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_horizontal"-->
-<!--            android:layout_marginTop="100dp"-->
-<!--            android:text="@string/plant_name"-->
-<!--            android:textAlignment="center"-->
-<!--            android:textSize="30sp" />-->
+        android:outlineSpotShadowColor="@color/black"
+        android:translationZ="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Spinner
             android:id="@+id/plantTypeSpinner"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:minHeight="48dp"
             android:textAlignment="center"
-            android:layout_marginTop="100dp"
-            android:layout_marginHorizontal="10dp"
-            android:layout_height="wrap_content" />
+            android:theme="@style/SpinnerTheme"
+            tools:ignore="SpeakableTextPresentCheck" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dataLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        android:outlineProvider="bounds"
+        android:outlineSpotShadowColor="@color/black"
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerLayout">
 
         <TextView
             android:id="@+id/textViewTemperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="170dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginHorizontal="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/temperature"
             android:textColor="@color/black"
@@ -64,30 +76,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="150dp"
             android:text="@string/moisture"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
     </LinearLayout>
 
+
     <LinearLayout
+        android:id="@+id/buttonLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:outlineAmbientShadowColor="@color/black"
         android:outlineProvider="bounds"
-        android:translationZ="1dp">
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/temperatureButton"
             style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:text="@string/temperature"
+            android:minWidth="100dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginEnd="10dp"
             android:textColor="@color/white"
             tools:ignore="DuplicateSpeakableTextCheck" />
 
@@ -96,7 +119,9 @@
             style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:minWidth="100dp"
+            android:layout_marginVertical="10dp"
+            android:padding="5dp"
             android:text="@string/light"
             android:textColor="@color/white"
             tools:ignore="DuplicateSpeakableTextCheck" />
@@ -106,10 +131,13 @@
             style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:minWidth="100dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginStart="10dp"
             android:text="@string/moisture"
             android:textColor="@color/white"
             tools:ignore="DuplicateSpeakableTextCheck" />
+
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
