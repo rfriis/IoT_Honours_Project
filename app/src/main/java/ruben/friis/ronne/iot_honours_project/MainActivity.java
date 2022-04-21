@@ -142,7 +142,8 @@ public class MainActivity extends AppCompatActivity {
     private void compareData() {
         // Temperature
         Boolean tempOk = Float.parseFloat(temp) >= temperatureMin;
-        tempTextView.setText("Temperature OK: " + tempOk + " -> " + temp + " °C");
+//        tempTextView.setText("Temperature OK: " + tempOk + " -> " + temp + " °C");
+        tempTextView.setText("Temperature: " + temp + " °C");
         Log.d("plant", "TEMPERATURE OK: " + tempOk);
 
         // Light
