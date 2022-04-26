@@ -99,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
 
         // initialise TextView's
         moistureTextView = findViewById(R.id.textViewMoisture);
-        tempTextView = findViewById(R.id.textViewTemperature);
-        lightTextView = findViewById(R.id.textViewLight);
+        tempTextView = findViewById(R.id.tempDataTextView);
+        lightTextView = findViewById(R.id.lightDataTextView);
 
 
         // Get selected Plant type from Shared Preferences if exits
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         // Temperature
         Boolean tempOk = Float.parseFloat(temp) >= temperatureMin;
 //        tempTextView.setText("Temperature OK: " + tempOk + " -> " + temp + " °C");
-        tempTextView.setText("Temperature: " + temp + " °C");
+        tempTextView.setText(temp + " °C");
         Log.d("plant", "TEMPERATURE OK: " + tempOk);
 
         // Light
