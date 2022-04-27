@@ -2,6 +2,7 @@ package ruben.friis.ronne.iot_honours_project;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -45,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView moistureTextView;
     private TextView tempTextView;
     private TextView lightTextView;
+    private ImageView tempImageView;
+    private ImageView lightImageView;
+    private ImageView moistureImageView;
     private Spinner plantTypeSpinner;
     private ArrayList<String> plantNames;
     private ArrayList<Plant> plants;
@@ -102,6 +107,10 @@ public class MainActivity extends AppCompatActivity {
         tempTextView = findViewById(R.id.tempDataTextView);
         lightTextView = findViewById(R.id.lightDataTextView);
 
+        // initialise ImageView's
+        tempImageView = findViewById(R.id.tempStatusImage);
+        lightImageView = findViewById(R.id.lightStatusImage);
+        moistureImageView = findViewById(R.id.moistureStatusImage);
 
         // Get selected Plant type from Shared Preferences if exits
         SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.plant_preference_file_key), Context.MODE_PRIVATE);
@@ -142,33 +151,45 @@ public class MainActivity extends AppCompatActivity {
     private void compareData() {
         // Temperature
         Boolean tempOk = Float.parseFloat(temp) >= temperatureMin;
-//        tempTextView.setText("Temperature OK: " + tempOk + " -> " + temp + " °C");
         tempTextView.setText(temp + " °C");
+        // Set Tick or Cross depending on Temperature value
+        if (tempOk) {
+            tempImageView.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_baseline_check_24));
+        } else {
+            tempImageView.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_baseline_close_24));
+        }
         Log.d("plant", "TEMPERATURE OK: " + tempOk);
 
         // Light
         float lightValue = Float.parseFloat(light);
-        Boolean lightTooHigh = false;
-        Boolean lightTooLow = false;
+        Boolean lightOk = true;
         if (lightValue > lightMax) {
-            lightTooHigh = true;
-            lightTextView.setText("Too much light");
+            lightOk = false;
+            lightTextView.setText(R.string.light_too_much);
             Log.d("plant", "LIGHT TOO HIGH");
         } else if (lightValue < lightMin) {
-            lightTooLow = true;
-            lightTextView.setText("Not enough light");
+            lightOk = false;
+            lightTextView.setText(R.string.light_too_little);
             Log.d("plant", "LIGHT TOO LOW");
         } else {
-            lightTextView.setText("Light level is good");
+            lightTextView.setText(R.string.light_good);
             Log.d("plant", "LIGHT OK");
+        }
+        // Set Tick or Cross depending on Light value
+        if (lightOk) {
+            lightImageView.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_baseline_check_24));
+        } else {
+            lightImageView.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_baseline_close_24));
         }
 
         // Moisture
         Boolean moistureOK = Boolean.valueOf(moisture);
         if (moistureOK) {
-            moistureTextView.setText("Water level is good");
+            moistureTextView.setText(R.string.water_good);
+            moistureImageView.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_baseline_check_24));
         } else {
-            moistureTextView.setText("Plant needs water");
+            moistureTextView.setText(R.string.water_need);
+            moistureImageView.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_baseline_close_24));
         }
         Log.d("plant", "MOISTURE OK: " + moistureOK);
     }

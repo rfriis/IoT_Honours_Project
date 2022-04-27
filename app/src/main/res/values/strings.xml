@@ -39,4 +39,9 @@
     <string name="plant_preference_file_key">ruben.friis.ronne.iot_honours_project.plant_preference</string>
     <string name="plant_reference_key">selected_plant</string>
     <string name="default_plant_value">DEFAULT</string>
+    <string name="water_good">Water level is good</string>
+    <string name="water_need">Plant needs water</string>
+    <string name="light_too_much">Too much light</string>
+    <string name="light_too_little">Not enough light</string>
+    <string name="light_good">Light level is good</string>
 </resources>
