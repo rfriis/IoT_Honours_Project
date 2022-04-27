@@ -28,7 +28,20 @@
     <string name="moisture_description_step_4">Holding the comparator as shown, plug one end of the Yellow wire to the top pin on the comparator, and the other end into the Raspberry Pi on the ninth pin from the left on the bottom row</string>
     <string name="moisture_description_step_5">Take the Grey wire and connect one end to the second top pin on the comparator, and the other end into the Raspberry Pi on the tenth pin from the left on the top row</string>
     <string name="moisture_description_step_6">Take the Purple wire and connect one end to the third top pin on the comparator, and the other end into the Raspberry Pi on the tenth pin from the left on the bottom row</string>
+    <string name="full_sun">Full Sun</string>
+    <string name="full_sun_to_partial_shade">Full Sun to Partial Shade</string>
+    <string name="partial_shade">Partial Shade</string>
+    <string name="partial_shade_to_full_shade">Partial Shade to Full Shade</string>
+    <string name="full_shade">Full Shade</string>
     <string name="back">Back</string>
     <string name="next">Next</string>
     <string name="finish">Finish</string>
+    <string name="plant_preference_file_key">ruben.friis.ronne.iot_honours_project.plant_preference</string>
+    <string name="plant_reference_key">selected_plant</string>
+    <string name="default_plant_value">DEFAULT</string>
+    <string name="water_good">Water level is good</string>
+    <string name="water_need">Plant needs water</string>
+    <string name="light_too_much">Too much light</string>
+    <string name="light_too_little">Not enough light</string>
+    <string name="light_good">Light level is good</string>
 </resources>
