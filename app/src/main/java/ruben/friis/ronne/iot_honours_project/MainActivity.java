@@ -3,6 +3,8 @@ package ruben.friis.ronne.iot_honours_project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -12,9 +14,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +39,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int NOTIFICATION_ID = 1;
+    private static final String CHANNEL_ID = "Moisture Notification";
+
     Button temperatureTutorialButton;
     Button lightTutorialButton;
     Button moistureTutorialButton;
@@ -40,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     DatabaseReference mainSetReference;
     DatabaseReference plantTypesReference;
+
+    NotificationManager notificationManager;
+    Notification.Builder notificationBuilder;
 
     private String temp;
     private String light;
@@ -63,11 +76,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initialise Notification Manager
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        // Create notification channel
+        initNotificationChannel();
+        // Create the Notification
+        Intent openIntent = new Intent(getApplicationContext(), MainActivity.class);
+        PendingIntent openPI = PendingIntent.getActivity(getApplicationContext(), 0, openIntent, 0);
+        notificationBuilder = new Notification.Builder(getApplicationContext(), CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_baseline_spa_24)
+                .setContentTitle("Plant Information")
+                .setContentText("Your plant needs to be watered")
+                .setContentIntent(openPI)
+                .setAutoCancel(true);
+
         // Initialise environment data values;
         temp = "";
         light = "";
         moisture = "";
-
 
         // initialise tutorial buttons
         temperatureTutorialButton = findViewById(R.id.temperatureButton);
@@ -188,6 +214,9 @@ public class MainActivity extends AppCompatActivity {
             moistureTextView.setText(R.string.water_good);
             moistureImageView.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_baseline_check_24));
         } else {
+            // Send Notification to User
+            notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build());
+
             moistureTextView.setText(R.string.water_need);
             moistureImageView.setImageDrawable(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.ic_baseline_close_24));
         }
@@ -283,6 +312,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Log.d("plant", plant.getName() + "   lightMin: " + lightMin + "   lightMax: " + lightMax);
+    }
+
+    private void initNotificationChannel() {
+        if (Build.VERSION.SDK_INT < 26) {
+            return;
+        }
+        notificationManager.createNotificationChannel(new NotificationChannel(CHANNEL_ID, "Moisture Channel", NotificationManager.IMPORTANCE_DEFAULT));
     }
 
 }
