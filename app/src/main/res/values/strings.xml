@@ -44,4 +44,5 @@
     <string name="light_too_much">Too much light</string>
     <string name="light_too_little">Not enough light</string>
     <string name="light_good">Light level is good</string>
+    <string name="tutorials">Tutorials</string>
 </resources>

@@ -82,7 +82,8 @@ public class SensorConnectionDialog extends DialogFragment {
                                 message = sensor + " sensor looks good!";
                                 additionalInfo = "Make sure the light on the sensor is on";
                             } else {
-                                message = sensor + " sensor looks good!";
+                                message = sensor + " sensor";
+                                additionalInfo = "Sensor connection looks good!";
                             }
                         } else if (sensorConnection.equals("false")) {
                             message = sensor + " sensor not connected";
